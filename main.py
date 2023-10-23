@@ -21,7 +21,7 @@ def enter_district(message):
     itembtn2 = types.InlineKeyboardButton(text='Восточная 3А', callback_data='Восточная 3А')
     
     markup.add(itembtn1, itembtn2)
-    bot.send_message(message.chat.id, 'Школа программирования для детей KIBERone Березовский приветствует вас!\n На этой неделе мы проводим бесплатный мастер-класс по программированию для детей 7-14 лет\nВаш ребенок создаст свой первый мультфильм и запрограммирует своего героя в игре Майнкрафт\nРасскажем, как избавить ребенка от игромании и научить компьютерной грамотности, чтобы подготовить к успешному будущему\nДлительность занятия 60 минут. Все необходимое предоставим. Ничего брать с собой не нужно.\n \nВыберите удобную для обучения локацию' , reply_markup=markup)
+    bot.send_message(message.chat.id, 'Школа программирования для детей KIBERone Березовский приветствует вас!\n \nНа этой неделе мы проводим бесплатный мастер-класс по программированию для детей 7-14 лет\n \nВаш ребенок создаст свой первый мультфильм и запрограммирует своего героя в игре Майнкрафт\n \nРасскажем, как избавить ребенка от игромании и научить компьютерной грамотности, чтобы подготовить к успешному будущему\n \nДлительность занятия 60 минут. Все необходимое предоставим. Ничего брать с собой не нужно.\n \nВыберите удобную для обучения локацию' , reply_markup=markup)
 
 def enter_age(message):
     markup = types.InlineKeyboardMarkup()
@@ -33,7 +33,7 @@ def enter_age(message):
 
 
 def enter_phone_number(message):
-    bot.send_message(message.chat.id, 'Пожалуйста, введите номер телефона, по которому мы можем с Вами связаться')
+    bot.send_message(message.chat.id, 'Спасибо! Остался последний шаг\n \nПожалуйста, введите номер телефона, по которому мы можем с Вами связаться')
     
 @bot.message_handler(content_types=['text'])
 def handle_text(message):
@@ -56,7 +56,7 @@ def handle_text(message):
 
 def check_and_send(message):
     if district_regex.match(data[message.chat.id]['district']) and age_regex.match(data[message.chat.id]['age']):
-        bot.send_message(message.chat.id, 'Спасибо! Скоро с вами свяжется администратор!')
+        bot.send_message(message.chat.id, 'Спасибо! Скоро с вами свяжется наш администратор, отправит вам расписание мастер-классов на ближайшую неделю и согласует точное время')
         bot.send_message(request_chat_id, 'Адрес ' + data[message.chat.id]['district']+' возраст '+data[message.chat.id]['age']+' '+data[message.chat.id]['phone_number'])
         clear_data(message)
     else:
