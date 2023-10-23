@@ -21,7 +21,7 @@ def enter_district(message):
     itembtn2 = types.InlineKeyboardButton(text='Восточная 3А', callback_data='Восточная 3А')
     
     markup.add(itembtn1, itembtn2)
-    bot.send_message(message.chat.id, 'Школа программирования для детей KIBERone Березовский приветствует вас! На этой неделе мы проводим бесплатный мастер-класс по программированию для детей 7-14 лет' , reply_markup=markup)
+    bot.send_message(message.chat.id, 'Школа программирования для детей KIBERone Березовский приветствует вас!\n На этой неделе мы проводим бесплатный мастер-класс по программированию для детей 7-14 лет' , reply_markup=markup)
 
 def enter_age(message):
     markup = types.InlineKeyboardMarkup()
