@@ -21,7 +21,7 @@ def enter_district(message):
     itembtn2 = types.InlineKeyboardButton(text='Восточная 3А', callback_data='Восточная 3А')
     
     markup.add(itembtn1, itembtn2)
-    bot.send_message(message.chat.id, 'Школа программирования для детей KIBERone Березовский приветствует вас' , reply_markup=markup)
+    bot.send_message(message.chat.id, 'Школа программирования для детей KIBERone Березовский приветствует вас! На этой неделе мы проводим бесплатный мастер-класс по программированию для детей 7-14 лет' , reply_markup=markup)
 
 def enter_age(message):
     markup = types.InlineKeyboardMarkup()
@@ -57,7 +57,7 @@ def handle_text(message):
 def check_and_send(message):
     if district_regex.match(data[message.chat.id]['district']) and age_regex.match(data[message.chat.id]['age']):
         bot.send_message(message.chat.id, 'Спасибо! Скоро с вами свяжется администратор!')
-        bot.send_message(request_chat_id, 'Район ' + data[message.chat.id]['district']+' возраст '+data[message.chat.id]['age']+' '+data[message.chat.id]['phone_number'])
+        bot.send_message(request_chat_id, 'Адрес ' + data[message.chat.id]['district']+' возраст '+data[message.chat.id]['age']+' '+data[message.chat.id]['phone_number'])
         clear_data(message)
     else:
         bot.send_message(message.chat.id, 'Неправильно сформированы ответы на вопросы, поробуйте еще раз')
