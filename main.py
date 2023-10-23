@@ -17,13 +17,11 @@ def enter_district(message):
     clear_data(message)
     data[message.chat.id] = {'stage':0}
     markup = types.InlineKeyboardMarkup()
-    itembtn1 = types.InlineKeyboardButton(text='Центр', callback_data='Центр')
-    itembtn2 = types.InlineKeyboardButton(text='ВИЗ', callback_data='ВИЗ')
-    itembtn3 = types.InlineKeyboardButton(text='Уралмаш', callback_data='Уралмаш')
-    itembtn4 = types.InlineKeyboardButton(text='Академический', callback_data='Академический')
-    itembtn5 = types.InlineKeyboardButton(text='ЖБИ', callback_data='ЖБИ')
-    markup.add(itembtn1, itembtn2, itembtn3, itembtn4, itembtn5)
-    bot.send_message(message.chat.id, 'Пожалуйста, выберите Ваш район ',reply_markup=markup)
+    itembtn1 = types.InlineKeyboardButton(text='Гагарина, 21', callback_data='Гагарина, 21')
+    itembtn2 = types.InlineKeyboardButton(text='Восточная 3А', callback_data='Восточная 3А')
+    
+    markup.add(itembtn1, itembtn2)
+    bot.send_message(message.chat.id, 'Школа программирования для детей KIBERone Березовский приветствует вас' , reply_markup=markup)
 
 def enter_age(message):
     markup = types.InlineKeyboardMarkup()
