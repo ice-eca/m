@@ -29,7 +29,7 @@ def enter_age(message):
     itembtn2 = types.InlineKeyboardButton(text='9-11 лет', callback_data='9-11')
     itembtn3 = types.InlineKeyboardButton(text='12-14 лет', callback_data='12-14')
     markup.add(itembtn1, itembtn2, itembtn3)
-    bot.send_message(message.chat.id, 'Пожалуйста, укажите возраст вашего ребенка',reply_markup=markup)
+    bot.send_message(message.chat.id, 'Пожалуйста, укажите возраст вашего ребенка\U0001F447',reply_markup=markup)
 
 
 def enter_phone_number(message):
