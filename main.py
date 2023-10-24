@@ -15,7 +15,7 @@ request_chat_id = '-4007021404'
 @bot.message_handler(commands=['start'])
 
 #def enter_district(message):
-    clear_data(message)
+    #clear_data(message)
     #data[message.chat.id] = {'stage':0}
     #markup = types.InlineKeyboardMarkup()
     #itembtn1 = types.InlineKeyboardButton(text='Гагарина, 21', callback_data='Гагарина, 21')
@@ -25,6 +25,8 @@ request_chat_id = '-4007021404'
    
     
 def enter_age(message):
+    clear_data(message)
+    data[message.chat.id] = {'stage':0}
     markup = types.InlineKeyboardMarkup()
     itembtn1 = types.InlineKeyboardButton(text='6-8 лет', callback_data='6-8')
     itembtn2 = types.InlineKeyboardButton(text='9-11 лет', callback_data='9-11')
@@ -48,9 +50,9 @@ def handle_text(message):
     if message.text.startswith('/'):
         bot.send_message(message.chat.id, 'Неверная команда')
         return
-    if phone_number_regex.match(message.text) and data[message.chat.id]['stage'] == 2:
+    if phone_number_regex.match(message.text) and data[message.chat.id]['stage'] == 1:
         data[message.chat.id]['phone_number'] = message.text
-        data[message.chat.id]['stage'] = 3
+        data[message.chat.id]['stage'] = 2
         check_and_send(message)
         return
     else:
@@ -74,7 +76,7 @@ def clear_data(message):
 def answering(call):
     if call.message.chat.id in data:
         if data[call.message.chat.id]['stage'] == 0:
-            data[call.message.chat.id]['district'] = call.data
+           # data[call.message.chat.id]['district'] = call.data
             data[call.message.chat.id]['stage'] = 1
             enter_age(call.message)
         elif data[call.message.chat.id]['stage'] == 1:
