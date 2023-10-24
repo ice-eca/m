@@ -74,12 +74,12 @@ def clear_data(message):
 @bot.callback_query_handler(func=lambda call: True)
 def answering(call):
     if call.message.chat.id in data:
-        if data[call.message.chat.id]['stage'] == 1:
+        if data[call.message.chat.id]['stage'] == 0:
             #data[call.message.chat.id]['district'] = call.data
-            data[call.message.chat.id]['stage'] = 2
+            data[call.message.chat.id]['stage'] = 1
             enter_age(call.message)
-        elif data[call.message.chat.id]['stage'] == 2:
+        elif data[call.message.chat.id]['stage'] == 1:
             data[call.message.chat.id]['age'] = call.data
-            data[call.message.chat.id]['stage'] = 3
+            data[call.message.chat.id]['stage'] = 2
             enter_phone_number(call.message)
 bot.infinity_polling()
