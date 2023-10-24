@@ -13,7 +13,7 @@ data = {}
 request_chat_id = '-4014020164'
 
 @bot.message_handler(commands=['start'])
-bot.send_photo(message.chat.id, open('kiber1.png', 'rb'))
+
 def enter_district(message):
     clear_data(message)
     data[message.chat.id] = {'stage':0}
@@ -22,6 +22,7 @@ def enter_district(message):
     itembtn2 = types.InlineKeyboardButton(text='Восточная 3А', callback_data='Восточная 3А')
     
     markup.add(itembtn1, itembtn2)
+    bot.send_photo(message.chat.id, open('kiber1.png', 'rb'))
     bot.send_message(message.chat.id, 'Школа программирования для детей KIBERone Березовский приветствует вас!\U0001F60A\n \nНа этой неделе мы проводим бесплатный мастер-класс по программированию для детей 7-14 лет\U0001F4BB\n \n\U00002705Ваш ребенок создаст свой первый мультфильм и запрограммирует своего героя в игре Майнкрафт\U0001F5A5\n \n\U00002705Расскажем, как избавить ребенка от игромании и научить компьютерной грамотности, чтобы подготовить к успешному будущему\n \n\U00002705Длительность занятия 60 минут. Все необходимое предоставим. Ничего брать с собой не нужно.\n \nВыберите удобную для обучения локацию\U0001F447' , reply_markup=markup)
     
 def enter_age(message):
