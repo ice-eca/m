@@ -27,7 +27,7 @@ def enter_district(message):
     
 def enter_age(message):
     markup = types.InlineKeyboardMarkup()
-    itembtn1 = types.InlineKeyboardButton(text='6-8 лет', callback_data='6-8')
+    itembtn1 = types.InlineKeyboardButton(text='7-8 лет', callback_data='7-8')
     itembtn2 = types.InlineKeyboardButton(text='9-11 лет', callback_data='9-11')
     itembtn3 = types.InlineKeyboardButton(text='12-14 лет', callback_data='12-14')
     markup.add(itembtn1, itembtn2, itembtn3)
@@ -59,7 +59,7 @@ def handle_text(message):
 def check_and_send(message):
     if district_regex.match(data[message.chat.id]['district']) and age_regex.match(data[message.chat.id]['age']):
         bot.send_message(message.chat.id, 'Спасибо! Скоро с вами свяжется наш администратор, отправит вам расписание мастер-классов на ближайшую неделю и согласует точное время\n \nДо встречи на уроке!\U0001F60A')
-        bot.send_message(request_chat_id, 'Адрес ' + data[message.chat.id]['district']+' возраст '+data[message.chat.id]['age']+' '+data[message.chat.id]['phone_number'])
+        bot.send_message(request_chat_id, 'Желаемый день: ' + data[message.chat.id]['district']+' возраст: '+data[message.chat.id]['age']+' '+data[message.chat.id]['phone_number'])
         clear_data(message)
     else:
         bot.send_message(message.chat.id, 'Неправильно сформированы ответы на вопросы, поробуйте еще раз')
