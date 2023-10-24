@@ -59,9 +59,9 @@ def handle_text(message):
         return
 
 def check_and_send(message):
-    if district_regex.match(data[message.chat.id]['district']) and age_regex.match(data[message.chat.id]['age']):
+    if  age_regex.match(data[message.chat.id]['age']):
         bot.send_message(message.chat.id, 'Спасибо! Скоро с вами свяжется наш администратор, отправит вам расписание мастер-классов на ближайшую неделю и согласует точное время\n \nДо встречи на уроке!\U0001F60A')
-        bot.send_message(request_chat_id, 'Адрес ' + data[message.chat.id]['district']+' возраст '+data[message.chat.id]['age']+' '+data[message.chat.id]['phone_number'])
+        bot.send_message(request_chat_id, 'Косулино ' +' возраст '+data[message.chat.id]['age']+' '+data[message.chat.id]['phone_number'])
         clear_data(message)
     else:
         bot.send_message(message.chat.id, 'Неправильно сформированы ответы на вопросы, поробуйте еще раз')
@@ -74,12 +74,12 @@ def clear_data(message):
 @bot.callback_query_handler(func=lambda call: True)
 def answering(call):
     if call.message.chat.id in data:
-        if data[call.message.chat.id]['stage'] == 0:
-            data[call.message.chat.id]['district'] = call.data
-            data[call.message.chat.id]['stage'] = 1
-            enter_age(call.message)
-        elif data[call.message.chat.id]['stage'] == 1:
-            data[call.message.chat.id]['age'] = call.data
+        if data[call.message.chat.id]['stage'] == 1:
+            #data[call.message.chat.id]['district'] = call.data
             data[call.message.chat.id]['stage'] = 2
+            enter_age(call.message)
+        elif data[call.message.chat.id]['stage'] == 2:
+            data[call.message.chat.id]['age'] = call.data
+            data[call.message.chat.id]['stage'] = 3
             enter_phone_number(call.message)
 bot.infinity_polling()
