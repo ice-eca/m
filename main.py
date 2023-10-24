@@ -75,7 +75,7 @@ def clear_data(message):
 def answering(call):
     if call.message.chat.id in data:
         if data[call.message.chat.id]['stage'] == 0:
-            #data[call.message.chat.id]['district'] = call.data
+            data[call.message.chat.id]['district'] = call.data
             data[call.message.chat.id]['stage'] = 1
             enter_age(call.message)
         elif data[call.message.chat.id]['stage'] == 1:
