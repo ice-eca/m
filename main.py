@@ -22,7 +22,7 @@ def enter_district(message):
     
     markup.add(itembtn1, itembtn2)
     bot.send_message(message.chat.id, 'Школа программирования для детей KIBERone Березовский приветствует вас!\U0001F60A\n \nНа этой неделе мы проводим бесплатный мастер-класс по программированию для детей 7-14 лет\U0001F4BB\n \n\U00002705Ваш ребенок создаст свой первый мультфильм и запрограммирует своего героя в игре Майнкрафт\U0001F5A5\n \n\U00002705Расскажем, как избавить ребенка от игромании и научить компьютерной грамотности, чтобы подготовить к успешному будущему\n \n\U00002705Длительность занятия 60 минут. Все необходимое предоставим. Ничего брать с собой не нужно.\n \nВыберите удобную для обучения локацию\U0001F447' , reply_markup=markup)
-    bot.send_photo(message.chat.id, 'kiber1.png')
+    bot.send_photo(message.chat.id, open('kiber1.png', 'rb'))
 
 def enter_age(message):
     markup = types.InlineKeyboardMarkup()
