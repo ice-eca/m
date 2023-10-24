@@ -2,7 +2,7 @@ import telebot
 from telebot import types
 import re
 
-TOKEN = '6611451445:AAHTjfg2wkR7Yd5OHfDFi3Z5eC07G9m46wk'
+TOKEN = '6731928104:AAF9_eQC2_Mt5ugxvBUz-Ehv1NUrtVsTKD4'
 
 bot = telebot.TeleBot(TOKEN)
 
@@ -10,20 +10,20 @@ phone_number_regex = re.compile(r'^(\+7|8)\d{10}$')
 age_regex = re.compile(r'^\d.*')
 district_regex = re.compile(r'^\D.*')
 data = {}
-request_chat_id = '-4014020164'
+request_chat_id = '-4007021404'
 
 @bot.message_handler(commands=['start'])
 
 def enter_district(message):
     clear_data(message)
-    data[message.chat.id] = {'stage':0}
-    markup = types.InlineKeyboardMarkup()
-    itembtn1 = types.InlineKeyboardButton(text='Гагарина, 21', callback_data='Гагарина, 21')
-    itembtn2 = types.InlineKeyboardButton(text='Восточная 3А', callback_data='Восточная 3А')
+    #data[message.chat.id] = {'stage':0}
+    #markup = types.InlineKeyboardMarkup()
+    #itembtn1 = types.InlineKeyboardButton(text='Гагарина, 21', callback_data='Гагарина, 21')
+    #itembtn2 = types.InlineKeyboardButton(text='Восточная 3А', callback_data='Восточная, 3А')
     
-    markup.add(itembtn1, itembtn2)
+    #markup.add(itembtn1, itembtn2)
     bot.send_photo(message.chat.id, open('kiber1.png', 'rb'))
-    bot.send_message(message.chat.id, 'Школа программирования для детей KIBERone Березовский приветствует вас!\U0001F60A\n \nНа этой неделе мы проводим бесплатный мастер-класс по программированию для детей 7-14 лет\U0001F4BB\n \n\U00002705Ваш ребенок создаст свой первый мультфильм и запрограммирует своего героя в игре Майнкрафт\U0001F5A5\n \n\U00002705Расскажем, как избавить ребенка от игромании и научить компьютерной грамотности, чтобы подготовить к успешному будущему\n \n\U00002705Длительность занятия 60 минут. Все необходимое предоставим. Ничего брать с собой не нужно.\n \nВыберите удобную для обучения локацию\U0001F447' , reply_markup=markup)
+    bot.send_message(message.chat.id, 'Школа программирования для детей KIBERone в Косулино приветствует вас!\U0001F60A\n \nНа этой неделе мы проводим бесплатный мастер-класс по программированию для детей 7-14 лет\U0001F4BB\n \n\U00002705Ваш ребенок создаст свой первый мультфильм и запрограммирует своего героя в игре Майнкрафт\U0001F5A5\n \n\U00002705Расскажем, как избавить ребенка от игромании и научить компьютерной грамотности, чтобы подготовить к успешному будущему\n \n\U00002705Длительность занятия 60 минут. Все необходимое предоставим. Ничего брать с собой не нужно.\n \nВыберите удобную для обучения локацию\U0001F447' )
     
 def enter_age(message):
     markup = types.InlineKeyboardMarkup()
