@@ -49,9 +49,9 @@ def handle_text(message):
     if message.text.startswith('/'):
         bot.send_message(message.chat.id, 'Неверная команда')
         return
-    if phone_number_regex.match(message.text) and data[message.chat.id]['stage'] == 1:
+    if phone_number_regex.match(message.text) and data[message.chat.id]['stage'] == 2:
         data[message.chat.id]['phone_number'] = message.text
-        data[message.chat.id]['stage'] = 2
+        data[message.chat.id]['stage'] = 3
         check_and_send(message)
         return
     else:
