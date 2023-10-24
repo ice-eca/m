@@ -14,25 +14,23 @@ request_chat_id = '-4007021404'
 
 @bot.message_handler(commands=['start'])
 
-#def enter_district(message):
+def enter_district(message):
+    clear_data(message)
+    data[message.chat.id] = {'stage':0}
+    markup = types.InlineKeyboardMarkup()
+    itembtn1 = types.InlineKeyboardButton(text='Гагарина, 21', callback_data='Гагарина, 21')
+    itembtn2 = types.InlineKeyboardButton(text='Восточная 3А', callback_data='Восточная, 3А')
     
-    #markup = types.InlineKeyboardMarkup()
-    #itembtn1 = types.InlineKeyboardButton(text='Гагарина, 21', callback_data='Гагарина, 21')
-    #itembtn2 = types.InlineKeyboardButton(text='Восточная 3А', callback_data='Восточная, 3А')
-    
-    #markup.add(itembtn1, itembtn2)
-    
+    markup.add(itembtn1, itembtn2)
+    bot.send_photo(message.chat.id, open('kiber1.png', 'rb'))
+    bot.send_message(message.chat.id, 'Школа программирования для детей KIBERone Березовский приветствует вас!\U0001F60A\n \nНа этой неделе мы проводим бесплатный мастер-класс по программированию для детей 7-14 лет\U0001F4BB\n \n\U00002705Ваш ребенок создаст свой первый мультфильм и запрограммирует своего героя в игре Майнкрафт\U0001F5A5\n \n\U00002705Расскажем, как избавить ребенка от игромании и научить компьютерной грамотности, чтобы подготовить к успешному будущему\n \n\U00002705Длительность занятия 60 минут. Все необходимое предоставим. Ничего брать с собой не нужно.\n \nВыберите удобную для обучения локацию\U0001F447' , reply_markup=markup)
     
 def enter_age(message):
-    clear_data(message)
-    data[message.chat.id] = {'stage':1}
     markup = types.InlineKeyboardMarkup()
     itembtn1 = types.InlineKeyboardButton(text='6-8 лет', callback_data='6-8')
     itembtn2 = types.InlineKeyboardButton(text='9-11 лет', callback_data='9-11')
     itembtn3 = types.InlineKeyboardButton(text='12-14 лет', callback_data='12-14')
     markup.add(itembtn1, itembtn2, itembtn3)
-    bot.send_photo(message.chat.id, open('kiber1.png', 'rb'))
-    bot.send_message(message.chat.id, 'Школа программирования для детей KIBERone Березовский приветствует вас!\U0001F60A\n \nНа этой неделе мы проводим бесплатный мастер-класс по программированию для детей 7-14 лет\U0001F4BB\n \n\U00002705Ваш ребенок создаст свой первый мультфильм и запрограммирует своего героя в игре Майнкрафт\U0001F5A5\n \n\U00002705Расскажем, как избавить ребенка от игромании и научить компьютерной грамотности, чтобы подготовить к успешному будущему\n \n\U00002705Длительность занятия 60 минут. Все необходимое предоставим. Ничего брать с собой не нужно.\n \nВыберите удобную для обучения локацию\U0001F447' )
     bot.send_message(message.chat.id, 'Пожалуйста, укажите возраст вашего ребенка\U0001F447',reply_markup=markup)
 
 
@@ -59,9 +57,9 @@ def handle_text(message):
         return
 
 def check_and_send(message):
-    if  age_regex.match(data[message.chat.id]['age']):
+    if district_regex.match(data[message.chat.id]['district']) and age_regex.match(data[message.chat.id]['age']):
         bot.send_message(message.chat.id, 'Спасибо! Скоро с вами свяжется наш администратор, отправит вам расписание мастер-классов на ближайшую неделю и согласует точное время\n \nДо встречи на уроке!\U0001F60A')
-        bot.send_message(request_chat_id, 'Косулино ' +' возраст '+data[message.chat.id]['age']+' '+data[message.chat.id]['phone_number'])
+        bot.send_message(request_chat_id, 'Адрес ' + data[message.chat.id]['district']+' возраст '+data[message.chat.id]['age']+' '+data[message.chat.id]['phone_number'])
         clear_data(message)
     else:
         bot.send_message(message.chat.id, 'Неправильно сформированы ответы на вопросы, поробуйте еще раз')
