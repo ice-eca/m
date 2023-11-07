@@ -26,7 +26,7 @@ def enter_district(message):
     bot.send_message(message.chat.id, 'Пожалуйста, укажите возраст вашего ребенка',reply_markup=markup)
 
 def enter_phone_number(message):
-    bot.send_message(message.chat.id, 'Пожалуйста, введите номер телефона, по которому мы можем с Вами связаться')
+    bot.send_message(message.chat.id, 'Пожалуйста, введите свой номер телефона, по которому мы сможем связаться с Вами и подобрать удобный район для записи')
     
 @bot.message_handler(content_types=['text'])
 def handle_text(message):
